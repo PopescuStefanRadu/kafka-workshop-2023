@@ -11,6 +11,7 @@
 
     <modules>
         <module>simple-consumer-producer</module>
+        <module>spring-consumer-producer</module>
     </modules>
 
     <properties>

@@ -98,7 +98,10 @@ kcat -C -b kafka1:9092 -t book-lines -o -2000 -J -e
  - group.instance.id
  - max.poll.interval.ms
  - max.poll.records
- - partition.assignment.strategy // https://www.confluent.io/blog/incremental-cooperative-rebalancing-in-kafka/
+ - partition.assignment.strategy
+   - https://www.confluent.io/blog/incremental-cooperative-rebalancing-in-kafka/
+   - https://www.conduktor.io/blog/kafka-partition-assignment-strategy/
+   - https://kafka.apache.org/10/javadoc/org/apache/kafka/clients/consumer/StickyAssignor.html
  - client.id
 
 ##### Producer
