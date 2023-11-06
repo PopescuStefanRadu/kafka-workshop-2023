@@ -1,0 +1,4 @@
+/.idea
+/simple-consumer-producer/target
+/target
+**/*.log
