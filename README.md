@@ -160,8 +160,8 @@ Part 1:
 
 1. Consume from a topic in a broker and for each message produce a message in a topic from a different broker
 2. Validate and handle validation for incoming messages from a topic
-3. Handle errors, both deserialization and application errors by logging them, retrying 5 times - Alex
-and finally pushing the messages into another topic (dead letter queue)
+3. Handle errors, both deserialization and application errors by logging them, retrying 5 times
+and finally pushing the messages into another topic (dead letter queue) - Alex
 4. Use incoming message conversion, check if it is also possible to produce messages that get converted 
 (see https://docs.spring.io/spring-kafka/docs/2.9.13/reference/html/#conversionservice-customization and 
 https://docs.spring.io/spring-kafka/docs/2.9.13/reference/html/#serdes )
