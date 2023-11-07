@@ -3,4 +3,6 @@ server:
 spring:
   kafka:
     bootstrap-servers: "kafka1:9092,kafka2:9093,kafka3:9094"
-#      type:
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false

@@ -34,6 +34,7 @@ public class BatchConsumer {
         CountDownLatch cd = new CountDownLatch(1);
         AtomicBoolean shouldRun = new AtomicBoolean(true);
         Thread ct = Thread.currentThread();
+
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             String threadName = ct.getName();
             log.info("Shutting down {}", threadName);
@@ -67,7 +68,7 @@ public class BatchConsumer {
 
     private static Properties consumerProperties() {
         final var props = Common.exampleTopicConsumerConfig();
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, Common.TOPIC_NAME_BOOK_LINES);
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "batch-consumer-book-lines-group");
         return props;
     }
 }

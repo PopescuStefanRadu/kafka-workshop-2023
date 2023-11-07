@@ -13,7 +13,11 @@ Scripts. Usually in `/opt`.
 ```
 
 ```bash
-./kafka-topics.sh --bootstrap-server kafka1:9092 --create --topic example --replication-factor 3 --partitions 3 --config retention.ms=300000
+./kafka-topics.sh --bootstrap-server kafka1:9092 --create \
+--topic example \
+--replication-factor 3 \
+--partitions 3 \
+--config retention.ms=300000
 ```
 
 ```bash
@@ -26,7 +30,7 @@ Scripts. Usually in `/opt`.
 
 ```bash
 ./kafka-console-consumer.sh --bootstrap-server kafka1:9092 --topic example \
---group test-group-1 \
+--group test-group-2 \
 --property print.key=true \
 --property key.separator=: \
 --property print.offset=true \
@@ -53,7 +57,7 @@ Get offsets for consumer groups
 
 ```bash
 ./kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
---group one-by-one-condition-book-lines-consumer \
+--group batch-consumer-book-lines-group \
 --describe
 ```
 
@@ -74,7 +78,7 @@ kcat -L -b kafka1:9092
 ```
 
 ```bash
-kcat -C -b kafka1:9092 -t book-lines -o beginning -J -e
+kcat -C -b kafka1:9092 -t example -o beginning -J -e
 ```
 
 ```bash
@@ -149,3 +153,16 @@ https://kafka.apache.org/documentation/#semantics
 https://spring.io/projects/spring-boot#learn
 
 https://docs.spring.io/spring-kafka/docs/2.9.13/reference/html/
+
+### Exercises
+
+1. Consume from a topic in a broker and for each message produce a message in a topic from a different broker
+2. Use embedded kafka to test a consumer-producer pair (for each consume we may produce a message)
+3. Validate and handle validation for incoming messages from a topic
+4. Handle errors, both deserialization and application errors by logging them, retrying 5 times 
+and finally pushing the messages into another topic (dead letter queue)
+5. Use incoming message conversion, check if it is also possible to produce messages that get converted 
+(see https://docs.spring.io/spring-kafka/docs/2.9.13/reference/html/#conversionservice-customization and 
+https://docs.spring.io/spring-kafka/docs/2.9.13/reference/html/#serdes )
+6. Read book lines and produce word counts as a result on a different topic: Key: lowercase word, Body: count.
+The goal is to eventually have a topic that holds the latest counts.

@@ -17,6 +17,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Slf4j
@@ -72,9 +73,9 @@ public class ProducerApp {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, Common.BOOTSTRAP_SERVERS);
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.LINGER_MS_CONFIG, 50);
+        props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384); // default
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getCanonicalName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getCanonicalName());
-        props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384); // default
         props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
         props.put(ProducerConfig.RETRIES_CONFIG, 100);
         props.put(ProducerConfig.CLIENT_ID_CONFIG, "example-producer");
