@@ -12,7 +12,6 @@ import ro.esolutions.demo.TopicManager;
 
 import java.io.Closeable;
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,7 +21,7 @@ import java.util.function.Consumer;
 
 @Slf4j
 public class AssignConsumer implements Closeable {
-    public static final Duration POLL_DURATION = Duration.of(5, ChronoUnit.SECONDS);
+    public static final Duration POLL_DURATION = Duration.ofSeconds(5000);
     private final KafkaConsumer<String, String> consumer;
     private final Collection<String> topics;
     private final CountDownLatch cd = new CountDownLatch(1);

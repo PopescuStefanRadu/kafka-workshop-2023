@@ -9,11 +9,10 @@ import org.springframework.kafka.config.TopicBuilder;
 import ro.esolutions.demo.springconsumerproducer.kafka.Common;
 
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 @SpringBootApplication
 public class SpringConsumerProducerApplication {
-    public static final Duration RETENTION = Duration.of(5, ChronoUnit.MINUTES);
+    public static final Duration RETENTION = Duration.ofSeconds(5000);
 
     @Bean
     public NewTopic exampleTopic() {

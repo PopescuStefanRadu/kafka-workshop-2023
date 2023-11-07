@@ -12,6 +12,7 @@
     <modules>
         <module>simple-consumer-producer</module>
         <module>spring-consumer-producer</module>
+        <module>ex_3</module>
     </modules>
 
     <properties>
